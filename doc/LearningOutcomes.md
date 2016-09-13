@@ -8,8 +8,9 @@ After studying this code and completing the corresponding exercises, you should 
 1. [Use abstract classes/methods `[LO-Abstract]`](#use-abstract-classesmethods-lo-abstract)
 1. [Follow Liskov Substitution Principle `[LO-LSP]`](#follow-liskov-substitution-principle-lo-lsp)
 1. [Use Java-FX for GUI programming `[LO-JavaFx]`](#use-java-fx-for-gui-programming-lo-javafx)
-
-
+1. [Apply Dependency Inversion Principle `[LO-DIP]`](#apply-dependency-inversion-principle)
+1. [Use Dependency Injection `[LO-DI]`](#use-dependency-injection)
+1. [Apply Open-Closed Principle `[LO-OCP]`](#apply-open-closed-principle)
 
 ------------------------------------------------------------------------------------------------------
 
@@ -24,9 +25,10 @@ After studying this code and completing the corresponding exercises, you should 
 
 ## Utilize use cases `[LO-UseCases]`
 
-#### Exercise: Add an 'Edit tag' use case 
-* Add a use case to the `DeveloperGuide.md` to cover the case of editing an existing tag.<br> 
-  e.g. change tag `friends` to `buddies` <br>
+#### Exercise: Add a 'Rename tag' use case 
+* Add a use case to the `DeveloperGuide.md` to cover the case of *renaming of an existing tag*.<br> 
+  e.g. rename the tag `friends` to `buddies` (i.e. all persons who had the `friends` tag will now have 
+  a `buddies` tag instead)<br>
   Assume that AddressBook confirms the change with the user before carrying out the operation. 
 
 ------------------------------------------------------------------------------------------------------
@@ -87,5 +89,51 @@ Covered by `[LO-Polymorphism]`
 * If you are new to JavaFX, follow Marco's tutorial given above.
 * Do some enhancements to the AddressBook GUI. e.g. add an application icon, change size/style 
 
+------------------------------------------------------------------------------------------------------
+
+## Apply Dependency Inversion Principle `[LO-DIP]`
+
+#### Exercise: Invert dependency from Logic to Storage
+
+* Note how `Logic` class depends on the `StorageFile` class. This is a violation of DIP.
+* Modify the implementation as follows so that both `Logic` and `StorageFile` now depend on the abstraction
+  `Storage`.<br>
+  <img src="images/LogicStroageFileDIP.png">
+
+------------------------------------------------------------------------------------------------------
+
+## Use Dependency Injection `[LO-DI]`
+
+#### Exercise: Facilitate injecting a StorageStub
+
+* Note how `Logic` class depends on the `StorageFile` class. This means when testing the `Logic` class,
+  our test cases executes the `StorageFile` class as well. What if we want to test the `Logic` class without
+  getting the `StorageFile` class involved?
+    
+* Now, change the implementation as follows so that we can inject a `StorageStub` when testing the `Logic`
+  class. <br>
+  <img src="images/DependencyInjection.png">
+  
+  > If you did the exercise in [`LO-DIP`](#apply-dependency-inversion-principle)
+    already but those changes are in a different branch, you may be able to reuse some of those commits 
+    by cherry picking them from that branch to the branch you created for this exercise. <br>
+    Note: *cherry picking* is simply copy-pasting a commit from one branch to another. In SourceTree, you can 
+    right-click on the commit your want to copy to the current branch, and choose 'Cherry pick'
+* Implement the `StorageStub` to ignore calls to the `save` method. 
+  Update the `LogicTest` to work with the `StorageStub` instead of the actual `StorageFile` object.
+
+------------------------------------------------------------------------------------------------------
+
+## Apply Open-Closed Principle `[LO-OCP]`
+
+#### Exercise: Add a new command
+
+* Add a new command to the Address Book. e.g. an `edit` command
+* Notice how little you need to change in the `Logic` class that is responsible for executing the commands.
+  That is because classes `Logic` and `*Command` follow the OCP i.e. `Logic` is *open to be extended* with more
+  commands but *closed for modifications*.
+* Think about how to make the `Person` class similarly open to be extended with more contact details 
+  (e.g. `SkypeId`) without needing modifications to its code during those extensions.
+  
 ------------------------------------------------------------------------------------------------------
 
