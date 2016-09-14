@@ -111,8 +111,8 @@ Use case ends.
 2. Should be able to hold up to 1000 persons.
 3. Should come with automated unit tests and open source code.
 4. Should favor DOS style commands over Unix-style commands.
-5. Should be able to specify location of storage.
-6. Should be able to take no more than 5 seconds to respond.
+5. Should not have an installer.
+6. Should be able to take no more than 1000ms to respond.
 7. Should not have any misspelled words or grammar errors.
 
 ## Appendix D : Glossary
