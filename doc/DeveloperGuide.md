@@ -83,6 +83,7 @@ Use case ends.
 
 1. User request to edit person tag
 2. AddressBook prompts user for confirmation
+3. User confirm.
 3. AddressBook edits person tag
 Use case ends.
 
@@ -98,9 +99,9 @@ Use case ends.
 > 2b1. AddressBook shows an error message <br>
   Use case resumes at step 1.
   
-2c. User does not confirm the edit
+3a. User does not confirm the edit
 
-> 2c1. AddressBook does not make any edits
+> 3a1. AddressBook does not make any edits
   Use case ends.
   
   
