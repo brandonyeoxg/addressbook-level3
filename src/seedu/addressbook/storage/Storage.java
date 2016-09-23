@@ -1,7 +1,7 @@
 package seedu.addressbook.storage;
 
 import seedu.addressbook.data.AddressBook;
-import seedu.addressbook.storage.StorageFile.StorageOperationException;
+import seedu.addressbook.storage.exception.StorageOperationException;
 
 public interface Storage {
 
