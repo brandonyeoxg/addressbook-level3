@@ -19,7 +19,8 @@ import java.util.Optional;
 public class Logic {
 
 
-    private Storage storage;
+    private static final int MAIN_OFFLINE_STORAGE = 0;
+    private Storage[] storages;
     private AddressBook addressBook;
 
     /** The list of person shown to the user most recently.  */
@@ -27,7 +28,7 @@ public class Logic {
 
     public Logic() throws Exception{
         setStorage(initializeStorage());
-        setAddressBook(storage.load());
+        setAddressBook(storages[MAIN_OFFLINE_STORAGE].load());
     }
 
     Logic(Storage storageFile, AddressBook addressBook){
@@ -35,8 +36,8 @@ public class Logic {
         setAddressBook(addressBook);
     }
 
-    void setStorage(Storage storage){
-        this.storage = storage;
+    void setStorage(Storage ...storages){
+        this.storages = storages;
     }
 
     void setAddressBook(AddressBook addressBook){
@@ -52,7 +53,7 @@ public class Logic {
     }
 
     public String getStorageFilePath() {
-        return storage.getPath();
+        return storages[MAIN_OFFLINE_STORAGE].getPath();
     }
 
     /**
@@ -87,7 +88,9 @@ public class Logic {
     private CommandResult execute(Command command) throws Exception {
         command.setData(addressBook, lastShownList);
         CommandResult result = command.execute();
-        storage.save(addressBook);
+        for ( Storage s : storages ) {
+            s.save(addressBook);
+        }
         return result;
     }
 

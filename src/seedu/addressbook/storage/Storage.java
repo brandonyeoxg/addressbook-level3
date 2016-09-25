@@ -6,7 +6,7 @@ import seedu.addressbook.storage.exception.StorageOperationException;
 public interface Storage {
 
     /** Default file path used if the user doesn't provide the file name. */
-    public static final String DEFAULT_STORAGE_FILEPATH = "addressbook.txt";    
+    public static final String DEFAULT_STORAGE_FILEPATH = "addressbook.txt";
     
     /**
      * Loads the addressbook from storage.
