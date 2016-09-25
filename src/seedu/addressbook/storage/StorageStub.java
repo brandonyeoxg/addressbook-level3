@@ -29,8 +29,8 @@ public class StorageStub implements Storage {
 
     private final JAXBContext jaxbContext;
 
-    public final Path path;
-
+    public final Path path;    
+    
     /**
      * @throws InvalidStorageFilePathException if the default path is invalid
      */
@@ -52,16 +52,16 @@ public class StorageStub implements Storage {
         if (!isValidPath(path)) {
             throw new InvalidStorageFilePathException("Storage file should end with '.txt'");
         }
-    }
-
+    }    
+    
     /**
      * Returns true if the given path is acceptable as a storage file.
      * The file path is considered acceptable if it ends with '.txt'
      */
     private static boolean isValidPath(Path filePath) {
         return filePath.toString().endsWith(".txt");
-    }
-
+    }    
+    
     /**
      * Emulates saving of AddressBook.
      *
