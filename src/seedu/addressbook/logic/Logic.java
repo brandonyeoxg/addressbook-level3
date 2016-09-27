@@ -35,7 +35,7 @@ public class Logic {
         setAddressBook(addressBook);
     }
 
-    void setStorage(Storage ...storages){
+    void setStorage(Storage... storages){
         this.storages = storages;
     }
 

@@ -252,6 +252,12 @@ public class Parser {
         return new FindCommand(keywordSet);
     }
     
+    /**
+     * Parses arguments in the contect of find person command using tag as keyword.
+     * 
+     * @param args full command args string.
+     * @return the prepared command.
+     */
     private Command prepareFindByTag(String args) {
         final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(args.trim());
         if (!matcher.matches()) {
