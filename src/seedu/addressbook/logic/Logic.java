@@ -18,7 +18,6 @@ import java.util.Optional;
  */
 public class Logic {
 
-
     private static final int MAIN_OFFLINE_STORAGE = 0;
     private Storage[] storages;
     private AddressBook addressBook;
@@ -52,6 +51,10 @@ public class Logic {
         return new StorageFile();
     }
 
+    /**
+     * Gets the main offline storage path for the storage location
+     * @return
+     */
     public String getStorageFilePath() {
         return storages[MAIN_OFFLINE_STORAGE].getPath();
     }
