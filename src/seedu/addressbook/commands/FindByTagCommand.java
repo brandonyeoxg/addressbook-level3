@@ -1,16 +1,13 @@
 package seedu.addressbook.commands;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.tag.Tag;
-import seedu.addressbook.data.tag.UniqueTagList;
 
 /**
  * Finds Persons by tags that they are linked to.
