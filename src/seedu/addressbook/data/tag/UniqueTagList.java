@@ -164,4 +164,5 @@ public class UniqueTagList implements Iterable<Tag> {
     public int hashCode() {
         return internalList.hashCode();
     }
+    
 }
